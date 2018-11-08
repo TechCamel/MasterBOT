@@ -13,8 +13,7 @@ namespace MasterBot.Core.Segurança
         {
             try
             {
-                Program path = new Program();
-                string key = File.ReadAllText($@"{path.path}\core\Segurança\md5Hash.txt");
+                string key = File.ReadAllText($@"{Program.path}\core\Segurança\md5Hash.txt");
                 byte[] keyArray;
                 byte[] Arreglo_a_Cifrar = UTF8Encoding.UTF8.GetBytes(texto);
                 MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
@@ -41,7 +40,7 @@ namespace MasterBot.Core.Segurança
             try
             {
                 Program path = new Program();
-                string key = File.ReadAllText($@"{path.path}\core\Segurança\md5Hash.txt");
+                string key = File.ReadAllText($@"{Program.path}\core\Segurança\md5Hash.txt");
                 byte[] keyArray;
                 byte[] Array_a_Descifrar = Convert.FromBase64String(textoEncriptado);
 
