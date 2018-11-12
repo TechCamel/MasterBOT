@@ -20,9 +20,9 @@ namespace MasterBot.Core.Comandos
             amizade.ReadLine();
             int LVL_amizade = Convert.ToInt32(amizade.ReadLine().ToString());
             if(LVL_amizade != 0)
-                await Context.Channel.SendMessageAsync("Hello World");
+                await Context.Channel.SendMessageAsync($"{Context.User.Mention} Hello World");
             else
-                await Context.Channel.SendMessageAsync($"Mas eu conheço-te?? {user.Username}");
+                await Context.Channel.SendMessageAsync($"Mas eu conheço-te?? {Context.User.Mention}");
         }
 
     }

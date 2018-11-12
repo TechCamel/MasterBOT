@@ -13,11 +13,11 @@ namespace MasterBot.Core.Inteligencia
             Random rand = new Random();
             switch (rand.Next(1, 2)){
                 case 1:
-                    return $"Tu é que mandas chefe {Context.User} ❤";
+                    return $"Tu é que mandas chefe {Context.User.Mention} ❤";
                 case 2:
-                    return $"Ta feito. Só porque gosto de ti {Context.User} ❤";
+                    return $"Ta feito. Só porque gosto de ti {Context.User.Mention} ❤";
                 default:
-                    return $"Ta feito. Só porque gosto de ti {Context.User} ❤";
+                    return $"Ta feito. Só porque gosto de ti {Context.User.Mention} ❤";
             }
 
         }
@@ -27,11 +27,11 @@ namespace MasterBot.Core.Inteligencia
             switch (rand.Next(1, 2))
             {
                 case 1:
-                    return $"{Context.User} Não, és feio 😂";
+                    return $"{Context.User.Mention} Não, és feio 😂";
                 case 2:
-                    return $"Não. Não mandas em mim {Context.User} ❤";
+                    return $"Não. Não mandas em mim {Context.User.Mention} ❤";
                 default:
-                    return $"Só porque gosto de ti adiciono-te {Context.User} ❤";
+                    return $"Só porque gosto de ti adiciono-te {Context.User.Mention} ❤";
             }
 
         }

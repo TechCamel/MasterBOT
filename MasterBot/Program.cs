@@ -84,16 +84,16 @@ namespace MasterBot
             if (context.User.IsBot) return;
 
             int prefixInd = 0;
-            if (!(mensagem.HasCharPrefix(Convert.ToChar("a"), ref prefixInd) || mensagem.HasMentionPrefix(Client.CurrentUser, ref prefixInd))) ;// Comando_Desconhecido.Novo_Comando(context.Message.Content, context);
+            if (!(mensagem.HasCharPrefix(Convert.ToChar("a"), ref prefixInd) || mensagem.HasMentionPrefix(Client.CurrentUser, ref prefixInd))); // Comando_Desconhecido.Novo_Comando(context.Message.Content, context);
 
             var result = await Comands.ExecuteAsync(context, prefixInd);
             if(!result.IsSuccess)
             {
                 if(result.ErrorReason == "Unknown command.")
                 {
-                    Comando_Desconhecido.Novo_Comando(context.Message.Content,context);
+                    await Comando_Desconhecido.Novo_ComandoAsync(context.Message.Content, context, mensagem.HasMentionPrefix(Client.CurrentUser, ref prefixInd));
                 }
-                Console.WriteLine($"{DateTime.Now} na sala {context.Channel} -> Ocureu um erro com o comando: {context.Message.Content} | Erro: {result.ErrorReason}");
+                Console.WriteLine($"{DateTime.Now} na sala {context.Channel} -> Ocorreu um erro com o comando: {context.Message.Content} | Erro: {result.ErrorReason}");
             }
         }
     }
