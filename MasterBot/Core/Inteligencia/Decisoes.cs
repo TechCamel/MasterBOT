@@ -12,7 +12,7 @@ namespace MasterBot.Core.Inteligencia
     {
         public static bool Decidir_Single(SocketUser user)
         {
-            StreamReader amizade = new StreamReader($@"{Program.path}\Data\Users\{user.Username}.txt");
+            StreamReader amizade = new StreamReader($@"{Program.path}\Data\Users\{user.Username}");
             amizade.ReadLine();
             int LVL_amizade = Convert.ToInt32(amizade.ReadLine().ToString());
             Random rand = new Random();
@@ -25,10 +25,10 @@ namespace MasterBot.Core.Inteligencia
         }
         public static bool Decidir_Double(SocketUser user,IUser user2add)
         {
-            StreamReader amizade = new StreamReader($@"{Program.path}\Data\Users\{user.Username}.txt");
+            StreamReader amizade = new StreamReader($@"{Program.path}\Data\Users\{user.Username}");
             amizade.ReadLine();
             int LVL_amizade = Convert.ToInt32(amizade.ReadLine().ToString());
-            StreamReader amizade2 = new StreamReader($@"{Program.path}\Data\Users\{user2add.Username}.txt");
+            StreamReader amizade2 = new StreamReader($@"{Program.path}\Data\Users\{user2add.Username}");
             amizade2.ReadLine();
             LVL_amizade += Convert.ToInt32(amizade2.ReadLine().ToString());
             Random rand = new Random();
