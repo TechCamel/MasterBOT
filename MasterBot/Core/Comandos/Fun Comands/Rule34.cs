@@ -12,27 +12,26 @@ namespace MasterBot.Core.Comandos
 {
     public class Rule34 : ModuleBase<SocketCommandContext>
     {
-        
-        //https://rule34.xxx/index.php?page=dapi&s=post&q=index&limit=1&tags={}
         [Command("Rule34"), Alias("rule34", "regra34", "Regra34", "REGRA34")]
         public async Task Rule34_Comand(string tags)
         {
-            XmlDocument xml = new XmlDocument();
             var wc = new WebClient();
-            xml.LoadXml(wc.DownloadString("https://rule34.xxx/index.php?page=dapi&s=post&q=index&limit=1&tags=mite"));
-
-            XmlNodeList xnList = xml.SelectNodes("/Names/Name");
-            foreach (XmlNode xn in xnList)
+            string xml = wc.DownloadString("https://rule34.xxx/index.php?page=dapi&s=post&q=index&limit=1&tags=" + tags);
+            string image = xml.Substring(xml.IndexOf("file_url=")+10);
+            image = image.Substring(0, image.LastIndexOf("parent_id=")-2);
+            if (!image.Contains("https://") && !image.Contains("http://"))
             {
-                string firstName = xn["FirstName"].InnerText;
-                string lastName = xn["LastName"].InnerText;
-                Console.WriteLine("Name: {0} {1}", firstName, lastName);
+                await Context.Channel.SendMessageAsync($"{Context.User.Mention} Desculpa mas não encontrei nada sobre isso.😢😢 \nAcho que vais ter que ser tu a fazer primeiro 😇😏✊✊");
             }
-            var embed = new EmbedBuilder(); embed.WithTitle("Ultimus Raid - Level 40");
+            else
+            {
+                var embed = new EmbedBuilder();
+                embed.WithTitle("Aqui esta o que eu encontrei sobre: " + tags + "\n Boas punhetas 😊😂✊");
 
-            embed.WithImageUrl("https://cdn.discordapp.com/attachments/430797829078908928/441255069518921728/Lvl40raid.png");
+                embed.WithImageUrl(image);
 
-            await ReplyAsync("", false, embed);
+                await ReplyAsync(Context.User.Mention, false, embed);
+            }
         }
     }
 }

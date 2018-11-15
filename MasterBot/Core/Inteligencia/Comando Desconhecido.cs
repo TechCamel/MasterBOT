@@ -27,7 +27,7 @@ namespace MasterBot.Core.Inteligencia
         }
         public static async Task ComandoAsync(string mensagem)
         {
-                await Context.Channel.SendMessageAsync($"{Context.User.Mention} Não conheço essa merda fala-me direito caralho");
+                await Context.Channel.SendMessageAsync(Respostas.NãoConheco(Context));
         }
     }
 }
