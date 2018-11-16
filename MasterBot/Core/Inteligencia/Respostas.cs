@@ -38,18 +38,20 @@ namespace MasterBot.Core.Inteligencia
         public static string NãoConheco(SocketCommandContext Context)
         {
             Random rand = new Random();
-            switch (rand.Next(1, 5))
+            switch (rand.Next(1, 6))
             {
                 case 1:
                     return $"{Context.User.Mention} Vai po caralho feio 😂";
                 case 2:
-                    return $"Ouvi dizer que eras paneleiro {Context.User.Mention} ❤";
+                    return $"Tambem ouvi dizer que eras paneleiro {Context.User.Mention} ❤";
                 case 3:
                     return $"{Context.User.Mention} Não conheço essa merda fala-me direito caralho";
                 case 4:
-                    return $"{Context.User.Mention} Aiii toniii";
+                    return $"{Context.User.Mention} Fala baixo pra mim caralho";
                 case 5:
-                    return $"{Context.User.Mention} A tua mae ontem não se queixou";
+                    return $"{Context.User.Mention} A tua mae ontem não se queixou🤣🤣";
+                case 6:
+                    return $"{Context.User.Mention} O caralho fodo-te o corpo 😒";
                 default:
                     return $"Só porque gosto de ti adiciono-te {Context.User.Mention} ❤";
             }
