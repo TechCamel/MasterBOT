@@ -37,7 +37,7 @@ namespace MasterBot
             Client.Log += Client_Log;
             Client.UserJoined += NewUser;
             Encriptação Gettoken = new Encriptação();
-            string token = "NTA5MDE4MTUwNTQ1OTE1OTE1.DsT86A.yaLYz7mRC8GvyQAoB-TVHJJ6wZo";
+            string token = File.ReadAllText(@"U:\gui.silva\Ambiente de Trabalho\Token MasterBot.txt");
             
             await Client.LoginAsync(TokenType.Bot, token);
             await Client.StartAsync();

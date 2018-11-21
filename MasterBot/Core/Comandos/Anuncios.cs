@@ -1,4 +1,5 @@
-﻿using Discord.Commands;
+﻿using Discord;
+using Discord.Commands;
 using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
@@ -8,18 +9,15 @@ using System.Threading.Tasks;
 namespace MasterBot.Core.Comandos
 {
     class Anuncios : ModuleBase<SocketCommandContext>
-    {/*
-        [Command("hello"), Alias("Hello World", "hello world", "hello World", "Hello World", "HELLO WORLD")]
-        public async Task hello()
+    {
+        [Command("Anunciar"), Alias("Anunciar", "anunciar", "ANUNCIAR")]
+        public async Task Anunciar(string Anuncio)
         {
-            SocketUser user = Context.User;
-            StreamReader amizade = new StreamReader($@"{Program.path}\Data\Users\{user.Username}.txt");
-            amizade.ReadLine();
-            int LVL_amizade = Convert.ToInt32(amizade.ReadLine().ToString());
-            if (LVL_amizade != 0)
-                await Context.Channel.SendMessageAsync($"{Context.User.Mention} Hello World");
-            else
-                await Context.Channel.SendMessageAsync($"Mas eu conheço-te?? {Context.User.Mention}");
-        }*/
+            DiscordSocketClient _client = new DiscordSocketClient(); 
+            ulong id = 513312735006687232; 
+            var chnl = _client.GetChannel(id) as IMessageChannel; 
+            await chnl.SendMessageAsync($"Novo Anuncio por {Context.User}!\n {Anuncio} \n \n {Context.User.Mention}");
+            
+        }
     }
 }
